@@ -1,0 +1,356 @@
+/* Main container for the link input form */
+.link-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    padding: 40px 20px; 
+    /* margin-top: 300px; */
+    box-sizing: border-box;
+    text-align: center;
+    /* background-color: white; */
+    /* width: 300vw; */
+}
+
+/* Form card styling */
+.link-form-card {
+    background-color: #2a2a4a; /* Slightly lighter dark background for the card */
+    padding: 40px;
+    border-radius: 15px;
+    
+    /* width: 100%; */
+    max-width: 900px; /* Max width for the form */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo styling */
+.link-form-card img {
+    width: 170px; /* Adjust logo size */
+    height: auto;
+    /* margin-bottom: 30px; */
+    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.6)); /* Subtle purple glow */
+}
+
+/* Heading styling */
+.link-form-card h2 {
+    font-size: 2em;
+    color: #9933ff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
+}
+
+/* Individual link field container */
+.link-field {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between segments */
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #4a4a6a;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.link-field:focus-within {
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
+}
+
+/* Icon wrapper */
+.link-icon-wrapper {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a5a;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1.4em;
+}
+
+/* Link input field */
+.link-input {
+    flex-grow: 1; /* Allow input to take available space */
+    padding: 12px;
+    border: none;
+    background-color: transparent; /* Transparent background to show parent's background */
+    color: #e0e0e0;
+    font-size: 1em;
+    outline: none;
+}
+
+.link-input::placeholder {
+    color: #9a9a9a;
+}
+
+/* Link type dropdown */
+.link-type-select {
+    flex-shrink: 0; /* Prevent dropdown from shrinking */
+    padding: 10px;
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    background-color: #3a3a5a;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    outline: none;
+    cursor: pointer;
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 30px; /* Space for the custom arrow */
+}
+
+.link-type-select option {
+    background-color: #3a3a5a;
+    color: #e0e0e0;
+}
+
+/* Remove button for each link field */
+.remove-link-button {
+    background-color: #ff6b6b; /* Red for removal */
+    color: #ffffff;
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.remove-link-button:hover {
+    background-color: #ff4c4c;
+    transform: scale(1.1);
+}
+
+/* Add Link Button */
+.add-link-button {
+    background: linear-gradient(45deg, #6a0dad, #8a2be2); /* Darker purple gradient */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.add-link-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(106, 13, 173, 0.6);
+    background: linear-gradient(45deg, #8a2be2, #6a0dad);
+}
+
+/* Submit Button */
+.submit-button {
+    background: linear-gradient(45deg, #8a2be2, #9933ff); /* Primary purple gradient */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(138, 43, 226, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.7);
+    background: linear-gradient(45deg, #9933ff, #8a2be2);
+}
+
+.submit-button:disabled {
+    background: #5a3a7a;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #2a2a4a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    color: #e0e0e0;
+}
+
+.modal-content.success {
+    border: 2px solid #4CAF50; /* Green border for success */
+}
+
+.modal-content.error {
+    border: 2px solid #ff6b6b; /* Red border for error */
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #9933ff;
+}
+
+.modal-content p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.modal-close-button {
+    background: linear-gradient(45deg, #8a2be2, #9933ff);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-close-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(138, 43, 226, 0.4);
+}
+
+/* Link name input field */
+.link-name-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    background-color: transparent;
+    color: #e0e0e0;
+    font-size: 1em;
+    outline: none;
+    margin-bottom: 8px;
+}
+
+.link-name-input::placeholder {
+    color: #9a9a9a;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .link-form-card {
+        padding: 30px;
+        max-width: 95%;
+    }
+
+    .link-form-card h2 {
+        font-size: 1.8em;
+    }
+
+    .link-field {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .link-icon-wrapper {
+        margin-bottom: 10px;
+    }
+
+    .link-input {
+        width: calc(100% - 20px); /* Adjust width for padding */
+        margin-bottom: 10px;
+    }
+
+    .link-type-select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .remove-link-button {
+        position: absolute; /* Position remove button top-right */
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+
+    .add-link-button, .submit-button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .link-form-card {
+        padding: 20px;
+    }
+
+    .link-form-card h2 {
+        font-size: 1.5em;
+    }
+
+    .link-form-card img {
+        width: 150px;
+    }
+
+    .link-field {
+        padding: 10px;
+    }
+
+    .link-icon-wrapper {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+
+    .link-input {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .link-type-select {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+
+    .add-link-button, .submit-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,397 @@
+/* General body and HTML styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #28285a; /* Dark purple gradient background */
+    color: #e0e0e0; /* Light text color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Main container for the homepage */
+.homepage-container {
+    /* margin-top: 120px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Section 1: Logo and Slogan */
+.hero-section {
+    /* margin-top: 65%; */
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.hero-section img {
+    width: 30vw;
+    height: auto;
+    /* margin-bottom: 20px; */
+    filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.7)); /* Stronger purple glow */
+    opacity: 0; /* Start hidden for animation */
+    animation: fadeInFromLeft 1.5s ease-out forwards;
+}
+
+.hero-section .slogan {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-top: -80px;
+    color: #9933ff; /* Bright purple for slogan */
+    opacity: 0; /* Start hidden for animation */
+    animation: fadeUp 1s ease-out forwards;
+    animation-delay: 1.2s; /* Delay slogan animation */
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section 2: Bullet Explanations */
+.explanation-section {
+    margin-top: 300px;
+    margin-bottom: 80px;
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+}
+
+.explanation-section h2 {
+    font-size: 2em;
+    color: #8a2be2;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(138, 43, 226, 0.3);
+}
+
+.explanation-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.explanation-section li {
+    background-color: #2a2a4a; /* Card-like background for each bullet */
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid #8a2be2; /* Purple accent border */
+    opacity: 0; /* Start hidden for animation */
+    animation: fadeIn 0.8s ease-out forwards; /* Fade in animation */
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #c0c0c0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explanation-section li:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation delays for sequential bullet fade-in */
+.explanation-section li:nth-child(1) { animation-delay: 0.5s; }
+.explanation-section li:nth-child(2) { animation-delay: 1.0s; }
+.explanation-section li:nth-child(3) { animation-delay: 1.5s; }
+.explanation-section li:nth-child(4) { animation-delay: 2.0s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section 3: Call to Action */
+.cta-section {
+    margin-bottom: 80px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.cta-section h2 {
+    font-size: 2.2em;
+    color: #9933ff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
+}
+
+.cta-section button {
+    padding: 18px 40px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #8a2be2, #9933ff); /* Gradient purple button */
+    color: #ffffff;
+    font-size: 1.4em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(138, 43, 226, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-section button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.7);
+    background: linear-gradient(45deg, #9933ff, #8a2be2); /* Reverse gradient on hover */
+}
+
+/* Section 4: Comments (Placeholder) */
+.comments-section {
+    margin-bottom: 80px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #2a2a4a;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.comments-section h2 {
+    font-size: 2em;
+    color: #8a2be2;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.comment-area {
+    background-color: #1a1a2e;
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 150px;
+    color: #c0c0c0;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* footerhomehome */
+.footerhome {
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #1a1a2e; /* Dark background for footerhome */
+    margin-bottom: -30px;
+    color: #7a7a7a;
+    font-size: 0.9em;
+    text-align: center;
+    border-top: 1px solid #3a3a5a;
+    box-sizing: border-box;
+}
+
+.footerhome p {
+    margin: 5px 0;
+}
+
+.footerhome a {
+    color: #8a2be2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footerhome a:hover {
+    color: #9933ff;
+}
+
+/* Fixed Login Button */
+.fixed-login-button {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: linear-gradient(45deg, #8a2be2, #9933ff);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+    transition: all 0.3s ease, width 0.3s ease, padding 0.3s ease; /* Smooth transitions for all properties */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflowing text/icon during transition */
+    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 1000; /* Ensure it's on top */
+    min-width: 50px; /* Minimum width for icon state */
+}
+
+.fixed-login-button .button-text {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    margin-right: 0px; /* No margin initially */
+}
+
+.fixed-login-button .login-icon {
+    font-size: 1.3em;
+    opacity: 0;
+    position: absolute; /* Position icon absolutely to align it */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+}
+
+/* State when scrolled */
+.fixed-login-button.scrolled {
+    padding: 12px; /* Smaller padding for icon state */
+    width: 50px; /* Fixed width for icon state */
+    box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3);
+}
+
+.fixed-login-button.scrolled .button-text {
+    opacity: 0; /* Hide text */
+    width: 0; /* Collapse text space */
+    margin-right: 0;
+}
+
+.fixed-login-button.scrolled .login-icon {
+    opacity: 1; /* Show icon */
+    position: static; /* Let icon take its natural place */
+    transform: none;
+}
+
+/* Hover state when scrolled */
+.fixed-login-button.scrolled:hover {
+    padding: 12px 25px; /* Expand padding back to text state */
+    width: auto; /* Allow width to expand with text */
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+}
+
+.fixed-login-button.scrolled:hover .button-text {
+    opacity: 1; /* Show text on hover */
+    width: auto;
+    margin-right: 5px; /* Add a small margin between text and icon if needed */
+}
+
+.fixed-login-button.scrolled:hover .login-icon {
+    opacity: 0; /* Hide icon on hover */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .hero-section {
+        margin-top: 20vh;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .hero-section {
+        margin-top: 12vh;
+    }
+
+    .hero-section img {
+        width: 350px;
+    }
+
+    .hero-section .slogan {
+        font-size: 1.8em;
+    }
+
+    .explanation-section h2,
+    .cta-section h2,
+    .comments-section h2 {
+        font-size: 1.7em;
+    }
+
+    .explanation-section li {
+        padding: 20px 25px;
+        font-size: 1em;
+    }
+
+    .cta-section button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+
+    .homepage-container {
+        padding: 30px 15px;
+    }
+
+    .fixed-login-button {
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .fixed-login-button.scrolled {
+        padding: 10px;
+        width: 45px;
+        min-width: 45px;
+    }
+}
+
+/* @media (max-width: 480px) {
+    .hero-section img {
+        width: 120px;
+    }
+
+    .hero-section .slogan {
+        font-size: 1.5em;
+    }
+
+    .explanation-section li {
+        font-size: 0.95em;
+        padding: 18px 20px;
+    }
+
+    .cta-section button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+
+    .comments-section {
+        padding: 25px;
+    }
+
+    .fixed-login-button {
+        top: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .fixed-login-button.scrolled {
+        padding: 8px;
+        width: 40px;
+        min-width: 40px;
+    }
+} */

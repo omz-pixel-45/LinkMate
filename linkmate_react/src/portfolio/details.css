@@ -1,0 +1,42 @@
+.main textarea {
+    padding: 10px;
+    height: 75px;
+    border: 1px solid #4a4a6a; 
+    border-radius: 8px;
+    background-color: #1a1a2e; 
+    color: #e0e0e0;
+    font-size: 16px;
+    outline: none; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main textarea::placeholder {
+    color: #9a9a9a; 
+}
+
+.main textarea:focus {
+    border-color: #8a2be2; 
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3); 
+}
+
+.upload-button {
+  padding: 10px 16px;
+  background-color: #9b30ff;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #7e22ce;
+}
+
+@media (max-width: 768px) {
+    .mainDetails{
+        height: auto;
+        max-height: 100%;
+    }
+}
