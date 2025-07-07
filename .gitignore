@@ -1,0 +1,25 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+
+# Logs
+logs
+*.log
+debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+profile_pics/
