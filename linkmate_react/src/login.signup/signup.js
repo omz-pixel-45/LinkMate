@@ -48,15 +48,15 @@ function SignUpForm(){
         <div className='main'>
             <img src={logo} alt='LinkMake Logo' />
             <form action={signup}>
-                <input type='email' name="email" placeholder='Email' required />
+                <input type='text' name="email" placeholder='Create Username' required />
                 <input type='password' name="pass" placeholder='Password' required />
                 <input type='password' name="cpass" placeholder='Confirm Password' required />
                 <button type='submit' disabled={pending} > {!pending ? 'Sign Up': 'Creating...'} </button>
             </form><br />
-            <button onClick={googleAuth}>
+            {/* <button onClick={googleAuth}>
                 <i className="fab fa-google"></i>
                 Continue with Google
-            </button>
+            </button> */}
              <br />
             <a href="/login" className="aLink">Sign In</a>
         </div>

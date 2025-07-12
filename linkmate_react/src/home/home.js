@@ -34,6 +34,7 @@ function Home() {
     // useEffect to add and remove the scroll event listener
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+
         // Clean up the event listener when the component unmounts
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -100,7 +101,7 @@ function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="footerhome">
+            <footer className="footerhome"><p><a href="/privacy">Privacy Policy</a> | <a href="/about">About</a> | <a href="/contact">Contact</a></p> <br /><br />
                 <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
                 <p>Developed by <a href="https://github.com/omz-pixel-45" target="_blank" rel="noopener noreferrer">Omar Matumbo</a> | GitHub: <a href="https://github.com/omz-pixel-45" target="_blank" rel="noopener noreferrer">omz-pixel-45</a></p>
             </footer>

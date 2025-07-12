@@ -14,8 +14,8 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true // only if you're sending cookies or auth headers
+  origin: true, // use in localhost only
+  credentials: true
 }));
 
 app.use('/profile_pics', express.static(path.join(__dirname, 'profile_pics')));
@@ -29,7 +29,7 @@ app.use(session({
     cookie: { 
         maxAge: 24 * 60 * 60 * 1000, // 24 hrs
         httpOnly: true,
-        secure: false,
+        secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax' // CSRF protection
     } 
 }));
@@ -161,7 +161,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 app.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: '/'
 }), async (req, res) => {
-    const email = req.user.emails?.[0]?.value || 'noemail@unknown.com';
+    const email = (req.user && req.user.emails && req.user.emails[0] && req.user.emails[0].value) || 'noemail@unknown.com';
 
     try {
         const results = await query("SELECT * FROM users WHERE email = ?", [email]);
@@ -216,7 +216,7 @@ app.post("/login", async (req,res) => {
 
             return res.json({success: false, passFail: true});
         }
-
+        console.log("Getting login")
         return res.json({success: false});        
 
     } catch (err) {
@@ -255,7 +255,38 @@ app.post("/signup", async (req,res) => {
 });
 
 
-app.post('/upload', isAuthenticated, upload.single('pic'), async (req, res) => {
+app.post("/user-check", async (req, res) => {
+    try {
+        const { pass, userId } = req.body;
+
+        if (!pass || !userId) {
+            return res.json({ isCorrect: false, error: 'Missing credentials' });
+        }
+
+        const results = await query("SELECT * FROM users WHERE id = ?", [userId]);
+
+        if (results.length === 1) {
+            const user = results[0];
+
+            const decrypted = decrypt(user.password);
+            if (decrypted === pass) {
+                return res.json({ isCorrect: true });
+            } else {
+                return res.json({ isCorrect: false });
+            }
+        }
+
+        return res.json({ isCorrect: false });
+
+    } catch (err) {
+        console.error("Error in /user-check:", err);
+        return res.json({ isCorrect: false });
+    }
+});
+
+
+
+app.post('/upload', upload.single('pic'), async (req, res) => {
     const { fname, lname, title, about, usrId, change } = req.body;
     const timestamp = new Date();
     // const pic = req.file?.filename || null;
@@ -289,7 +320,7 @@ app.post('/upload', isAuthenticated, upload.single('pic'), async (req, res) => {
 
 
 
-app.post('/links', isAuthenticated, async (req, res) => {
+app.post('/links', async (req, res) => {
     const { links, uId } = req.body;
     try{
         for(let link of links){
@@ -307,7 +338,7 @@ app.post('/links', isAuthenticated, async (req, res) => {
 });
 
 
-app.get("/getLinks",isAuthenticated, async (req, res) => {
+app.get("/getLinks", async (req, res) => {
     const u = req.query.u;
     try{
         const linksArray = await query(`
@@ -323,7 +354,7 @@ app.get("/getLinks",isAuthenticated, async (req, res) => {
     }
 });
 
-app.post("/updlinks", isAuthenticated, async (req, res) => {
+app.post("/updlinks", async (req, res) => {
     const { links, uId } = req.body;
     try{
         await query(`

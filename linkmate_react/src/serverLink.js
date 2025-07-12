@@ -1,3 +1,12 @@
 export default function ServerLink(path){
-    return `http://localhost:3500${path}`
+    let url = window.location.href.split(':');
+    if (url[2]) {
+        url[2] = 3500;
+        url = url.join(':');
+        url += path
+    }
+    else url = 'https://member.darkchat.chat' + path;
+    return url;
 }
+
+

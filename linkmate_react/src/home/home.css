@@ -24,8 +24,8 @@ body, html {
 
 /* Section 1: Logo and Slogan */
 .hero-section {
-    /* margin-top: 65%; */
-    margin-bottom: 80px;
+    margin-top: 3vh;
+    /* margin-bottom: 80px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -302,6 +302,43 @@ body, html {
 .fixed-login-button.scrolled:hover .login-icon {
     opacity: 0; /* Hide icon on hover */
 }
+
+.info-page {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.info-page h1 {
+  font-size: 2.2rem;
+  color: #222;
+  margin-bottom: 1rem;
+  border-left: 5px solid #ffc107;
+  padding-left: 10px;
+}
+
+.info-page a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-page a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 
 
 /* Responsive adjustments */

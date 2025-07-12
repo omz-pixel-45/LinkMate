@@ -18,11 +18,30 @@ function DetailsForm(){
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
+        const u = queryParams.get('u');
         const changeParam = queryParams.get('change');
 
-    
-        if(changeParam) setChanged(true);
-    }, [])
+        if (changeParam) {
+            setChanged(true);
+
+            const verifyPassword = async () => {
+                const password = prompt("Enter password for this account!");
+                try {
+                    const response = await axios.post(ServerLink('/user-check'), { pass: password, userId: u }, {
+                        withCredentials: true
+                    });
+                    if (!response.data.isCorrect) {
+                        window.location.href = '/';
+                    }
+                } catch (err) {
+                    console.error('Verification failed:', err);
+                    window.location.href = '/';
+                }
+            };
+
+            verifyPassword();
+        }
+    }, []);
 
 
     async function sendDetail(formData) {

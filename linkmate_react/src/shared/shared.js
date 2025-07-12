@@ -5,6 +5,7 @@ import {
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6'; // For "X" icon
 import logo from '../logo.png';
+import ServerLink from '../serverLink';
 
 const iconMap = {
   website: <FaGlobe />,
@@ -36,7 +37,7 @@ function ShowSharedLinks() {
     const u = searchParams.get('u');
     if (!u) return;
 
-    fetch('http://localhost:3500/preview', {
+    fetch( ServerLink('/preview') , {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ u })

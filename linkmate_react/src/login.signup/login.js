@@ -32,15 +32,16 @@ function LoginForm(){
         <div className='main'>
             <img src={logo} alt='LinkMake Logo' />
             <form action={login}>
-                <input type='email' name="email" placeholder='Email' required />
+                <input type='text' name="email" placeholder='Username' required />
                 <input type='password' name="pass" placeholder='Password' required />
                 <button type='submit' disabled={pending} > {!pending ? 'Login': 'Logging in...'} </button>
             </form>
-            <hr />
+            {/* <hr />
             <button onClick={googleAuth}>
                 <i className="fab fa-google"></i>
                 Continue with Google
-            </button> <br /><br />
+            </button>  */}
+            <br /><br />
             <a href="/signup" className="aLink">Create Account</a>
         </div>
     );
