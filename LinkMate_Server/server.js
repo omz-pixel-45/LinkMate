@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors({
-  origin: true, // use in localhost only
+  origin: true,
   credentials: true
 }));
 
@@ -82,14 +82,14 @@ async function delpic(usrId) {
     if (prev.length > 0 && prev[0].profil_pic) {
         const oldPrefix = prev[0].profil_pic;
         const folderPath = path.join(__dirname, 'profile_pics');
-        const fileToDelete = findFile(folderPath, oldPrefix); // your existing function
+        const fileToDelete = findFile(folderPath, oldPrefix);
     
         if (fileToDelete) {
         const fullPath = path.join(folderPath, fileToDelete);
-        fs.unlinkSync(fullPath); // delete the old file
-        console.log(`✅ Deleted old pic: ${fileToDelete}`);
+        fs.unlinkSync(fullPath);
+        console.log(`Deleted old pic: ${fileToDelete}`);
         } else {
-        console.log(`⚠️ No old pic found starting with: ${oldPrefix}`);
+        console.log(`No old pic found starting with: ${oldPrefix}`);
         }
     }
 }
@@ -99,7 +99,6 @@ async function genPicName() {
   let generated;
 
   while (!unique) {
-    // Generate a random 8-digit string
     generated = Math.floor(10000000 + Math.random() * 90000000).toString();
 
     const rows = await query(
@@ -136,11 +135,11 @@ function findFile(dirPath, prefix) {
     const files = fs.readdirSync(dirPath);
     for (let file of files) {
         if (file.substring(0, 8) === prefix) {
-        return file; // Found it
+        return file;
         }
     }
 
-    return null; // No match found
+    return null;
 }
 
 
@@ -149,8 +148,8 @@ passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
 passport.use(new GoogleStrategy({
-    clientID: '136586707224-066bhgfeb3hk8tinf22eag5fe36j201l.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
     return done(null, profile);
@@ -192,7 +191,7 @@ app.get('/auth/google/callback', passport.authenticate('google', {
 });
 
 
-// -- LinkMata --
+// -- LinkMate --
 app.post("/login", async (req,res) => {
     try {
         const { email, pass} = req.body;
@@ -382,8 +381,6 @@ app.post('/preview', async (req, res) => {
     
     console.log(`Received request for user ID: ${u}`);
     console.log(req.session)
-
-    // Simulate fetching data based on 'u'
     
 
     try {
