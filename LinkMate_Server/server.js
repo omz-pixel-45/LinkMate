@@ -427,3 +427,10 @@ server.listen(3500, '0.0.0.0', () => {
     console.log("Server running on http://localhost:3500");
     console.log("\nListening for requests...\n");
 });
+
+
+/* 
+LinkMate
+Developed by Omar Matumbo
+Github omz-pixel-45
+*/
